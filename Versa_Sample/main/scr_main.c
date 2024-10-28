@@ -174,6 +174,9 @@ void MainMenuScreenHandler(void)
   for (;;)
   {
     event = GetUserInterfaceEvent();
+    
+    DrawChar(10,10, "q", GREY_COLOR, GREEN_COLOR);
+
     switch (event)
     {
     case EV_INIT: break;// Initialization event

@@ -23,6 +23,7 @@
 #include "hwplatform.h"
 
 #include "screen_backlight.h"
+#include "font8x8_basic.h"
 
 #define KEY_END     0x00
 
@@ -404,6 +405,7 @@ void LCD_DrawRectangle(uint16_t x,  uint16_t y,
   TFTSetActiveWindow(x,y,x+sx-1,y+sy-1);
   LCD_StartWriteOperation();
   LCD_FillData(col,n);
+
 }
 
 //******************************************************************************
@@ -449,4 +451,32 @@ void TFT_BacklightManage(void)
   if (blTarget > blCurrent) blCurrent += inc;
   else blCurrent -= inc;
   BKL_Set(blCurrent);
+}
+
+
+
+void DrawChar(uint16_t x, uint16_t y, char c, uint16_t color, uint16_t bgColor) {
+    uint8_t i, j;
+    uint8_t pixelRow;
+    
+    // if (c < 0 || c >= 128) {
+    //     return; // Invalid character
+    // }
+
+    // Get the bitmap for the character 'c'
+    const uint8_t *bitmap = font8x8_basic[(uint8_t)c];
+
+    // Draw the character bitmap (8x8)
+    for (i = 0; i < 8; i++) {
+        pixelRow = bitmap[i];  // Get row of pixels for the character
+        for (j = 0; j < 8; j++) {
+            if (pixelRow & (1 << (7 - j))) {
+                // Set the pixel color for foreground
+                PutPixelHiCol(x + j, y + i, color);
+            } else {
+                // Set the pixel color for background
+                PutPixelHiCol(x + j, y + i, bgColor);
+            }
+        }
+    }
 }

@@ -1,0 +1,12 @@
+{
+  "idf.portWin": "COM5",
+  "files.associations": {
+    "njk": "html",
+    "*.ino": "arduino-output",
+    ".env*": "dotenv",
+    ".dev.vars": "dotenv",
+    "*.toml": "dotenv",
+    "*.css.txt": "css",
+    "font8x8_basic.h": "c"
+  }
+}

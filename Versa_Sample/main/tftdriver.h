@@ -147,4 +147,6 @@ void LCD_DrawRectangle(uint16_t x, uint16_t y, uint16_t sx, uint16_t sy, uint16_
 void TFT_BacklightManage(void);
 void TFT_SetBacklight(uint16_t pct);
 
+void DrawChar(uint16_t x, uint16_t y, char c, uint16_t color, uint16_t bgColor);
+
 #endif
