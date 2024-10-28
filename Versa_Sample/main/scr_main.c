@@ -33,7 +33,7 @@
 
 #define GREY_COLOR  RGB565(240, 240, 240)
 #define GREEN_COLOR RGB565(0, 255, 0)
-
+#define BLACK_COLOR RGB565(0, 0, 0)
 //******************************************************************************
 // FUNCTIONS
 
@@ -175,8 +175,8 @@ void MainMenuScreenHandler(void)
   {
     event = GetUserInterfaceEvent();
     
-    DrawChar(10,10, "q", GREY_COLOR, GREEN_COLOR);
-
+    DrawText(10,10, "aABCDEFGHIJKLM", GREY_COLOR, BLACK_COLOR);
+    DrawText(10,30, "NOPQRSTUVWXYZ", GREY_COLOR, BLACK_COLOR);
     switch (event)
     {
     case EV_INIT: break;// Initialization event

@@ -148,5 +148,6 @@ void TFT_BacklightManage(void);
 void TFT_SetBacklight(uint16_t pct);
 
 void DrawChar(uint16_t x, uint16_t y, char c, uint16_t color, uint16_t bgColor);
+void DrawText(uint16_t x, uint16_t y, const char *text, uint16_t color, uint16_t bgColor);
 
 #endif

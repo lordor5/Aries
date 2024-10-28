@@ -5,12 +5,17 @@
   "_warning": "Use / or \\ when specifying path. Single backslash is not allowed by JSON format.",
   "gitPath": "c:\\Users\\hugob\\Documentos\\Github\\Aries\\Versa_Sample\\tools\\idf-git\\2.39.2\\cmd\\git.exe",
   "idfToolsPath": "c:\\Users\\hugob\\Documentos\\Github\\Aries\\Versa_Sample",
-  "idfSelectedId": "esp-idf-1a2144a61ee609ec41fc212130ee95c8",
+  "idfSelectedId": "esp-idf-7d2671ec601f3c7dbe2fcd8b6c34d7be",
   "idfInstalled": {
     "esp-idf-1a2144a61ee609ec41fc212130ee95c8": {
       "version": "4.4.4",
       "python": "c:\\Users\\hugob\\Documentos\\Github\\Aries\\Versa_Sample\\python_env\\idf4.4_py3.8_env\\Scripts\\python.exe",
       "path": "C:\\Users\\hugob\\esp\\v4.4.4\\esp-idf"
+    },
+    "esp-idf-7d2671ec601f3c7dbe2fcd8b6c34d7be": {
+      "version": "4.4.4",
+      "python": "c:\\Users\\Lordor\\Documents\\GitHub\\Aries\\Versa_Sample\\python_env\\idf4.4_py3.8_env\\Scripts\\python.exe",
+      "path": "C:\\Users\\Lordor\\esp\\v4.4.4\\esp-idf"
     }
   }
 }

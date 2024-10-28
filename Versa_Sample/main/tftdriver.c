@@ -24,6 +24,7 @@
 
 #include "screen_backlight.h"
 #include "font8x8_basic.h"
+#include "esp_log.h"
 
 #define KEY_END     0x00
 
@@ -453,7 +454,7 @@ void TFT_BacklightManage(void)
   BKL_Set(blCurrent);
 }
 
-
+static const char* TAG = "MAIN";
 
 void DrawChar(uint16_t x, uint16_t y, char c, uint16_t color, uint16_t bgColor) {
     uint8_t i, j;
@@ -478,5 +479,24 @@ void DrawChar(uint16_t x, uint16_t y, char c, uint16_t color, uint16_t bgColor) 
                 PutPixelHiCol(x + j, y + i, bgColor);
             }
         }
+    }
+}
+
+void DrawText(uint16_t x, uint16_t y, const char *text, uint16_t color, uint16_t bgColor) {
+    uint16_t cursorX = x;
+    uint16_t cursorY = y;
+    
+    // Iterate over each character in the string
+    while (*text) {
+        if (*text == '\n') {
+            // Newline: Move cursor to the next line
+            cursorY += 8;  // Move down 8 pixels (assuming 8x8 font)
+            cursorX = x;   // Reset to the start of the line
+        } else {
+            // Draw the character
+            DrawChar(cursorX, cursorY, *text, color, bgColor);
+            cursorX += 8;  // Move cursor for the next character
+        }
+        text++;
     }
 }
