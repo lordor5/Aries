@@ -470,8 +470,8 @@ void DrawChar(uint16_t x, uint16_t y, char c, uint16_t color, uint16_t bgColor) 
     // Draw the character bitmap (8x8)
     for (i = 0; i < 8; i++) {
         pixelRow = bitmap[i];  // Get row of pixels for the character
-        for (j = 0; j < 8; j++) {
-            if (pixelRow & (1 << (7 - j))) {
+        for (j = 8; j > 0; j--) {
+            if (pixelRow & (1 << (/*7 -*/ j))) {
                 // Set the pixel color for foreground
                 PutPixelHiCol(x + j, y + i, color);
             } else {

@@ -161,6 +161,13 @@ static void EmphasizeButton(tUIEvent button)
   }
 }
 
+int fpsCap = 60;
+
+int64_t lastTime = 0;
+double DeltaTime(void) {
+  return (esp_timer_get_time() - lastTime) / 1000000.0;
+}
+
 //******************************************************************************
 void MainMenuScreenHandler(void)
 //******************************************************************************
@@ -171,12 +178,40 @@ void MainMenuScreenHandler(void)
 
   UIForceFullRedraw(); // When we enter this menu, we have to force full redraw
 
+  double x = 0;
+  double y = 0;
+
   for (;;)
   {
     event = GetUserInterfaceEvent();
-    
-    DrawText(10,10, "aABCDEFGHIJKLM", GREY_COLOR, BLACK_COLOR);
-    DrawText(10,30, "NOPQRSTUVWXYZ", GREY_COLOR, BLACK_COLOR);
+    lastTime = esp_timer_get_time();
+
+    //Show FPS
+    char text[16]; 
+    snprintf(text, sizeof(text), "%.0f", 1.0 / DeltaTime());
+    DrawText(10,30, text, GREY_COLOR, BLACK_COLOR);
+
+
+    //FPS Cap
+    //while (lastTime + (1.0/fpsCap)*1000000 > esp_timer_get_time()){}
+
+    //240
+    //320
+
+    //DrawText(10,50, esp_timer_get_time().toString(2) , GREY_COLOR, BLACK_COLOR);
+    //DrawText(10,10, "ABCDEFGHIJKLM", GREY_COLOR, BLACK_COLOR);
+
+
+    printf("FPS: %f\n", 1.0/DeltaTime());
+
+    if (IsKeyPressedLowLevel(0)) {
+      x += 10*DeltaTime();
+      if (x > 239) {x = 0; y +=10;}
+    }
+
+    LCD_DrawRectangle(x,y,10,10,255);
+
+
     switch (event)
     {
     case EV_INIT: break;// Initialization event
